@@ -102,7 +102,7 @@ Public Class Form1
             End If
 
             '音声ダウンロード分岐
-            If (ComboBox2.SelectedIndex = 1) Then
+            If (ComboBox1.SelectedIndex = 1) Then
                 TextBox7.Text = TextBox7.Text + "-x --extract-audio --audio-format " + ComboBox5.Text + " "
             End If
 
