@@ -105,45 +105,43 @@ Public Class Form1
             If (ComboBox1.SelectedIndex = 1) Then
                 TextBox7.Text = TextBox7.Text + "-x --extract-audio --audio-format " + ComboBox5.Text + " "
             End If
+        End If
+        '動画URLがあるかどうか
+        If (TextBox1.Text = "") Then
+            MsgBox("URLを指定してください")
+            Return
+        End If
 
+        'プレイリストを無視するかどうか
+        If (CheckBox6.Checked = True) Then
+            TextBox7.Text = TextBox7.Text + "--yes-playlist "
+        Else
+            TextBox7.Text = TextBox7.Text + "--no-playlist "
+        End If
 
-            '動画URLがあるかどうか
-            If (TextBox1.Text = "") Then
-                MsgBox("URLを指定してください")
-                Return
-            End If
+        '保存場所を指定
+        If (TextBox2.Text = "") Then
+        Else
+            TextBox7.Text = TextBox7.Text + "-o " + TextBox2.Text + "\%(title)s.%(ext)s "
+        End If
 
-            'プレイリストを無視するかどうか
-            If (CheckBox6.Checked = True) Then
-                TextBox7.Text = TextBox7.Text + "--yes-playlist "
-            Else
-                TextBox7.Text = TextBox7.Text + "--no-playlist "
-            End If
+        'コマンドプロンプトを表示するかどうか
+        Dim t As Integer = ProcessWindowStyle.Normal
+        If (CheckBox2.Checked = True) Then
+            t = ProcessWindowStyle.Hidden
+        Else
+            t = ProcessWindowStyle.Normal
+        End If
 
-            '保存場所を指定
-            If (TextBox2.Text = "") Then
-            Else
-                TextBox7.Text = TextBox7.Text + "-o " + TextBox2.Text + "\%(title)s.%(ext)s "
-            End If
+        TextBox7.Text = "yt-dlp --console-title --progress " + TextBox7.Text + TextBox1.Text
 
-            'コマンドプロンプトを表示するかどうか
-            Dim t As Integer = ProcessWindowStyle.Normal
-            If (CheckBox2.Checked = True) Then
-                t = ProcessWindowStyle.Hidden
-            Else
-                t = ProcessWindowStyle.Normal
-            End If
-
-            TextBox7.Text = "yt-dlp --console-title --progress " + TextBox7.Text + TextBox1.Text
-
-            If (CheckBox7.Checked = False) Then
-                Dim Download As New ProcessStartInfo With {
+        If (CheckBox7.Checked = False) Then
+            Dim Download As New ProcessStartInfo With {
                 .FileName = Environment.GetEnvironmentVariable("ComSpec"),
                 .WindowStyle = t,
                 .Arguments = "/c " + TextBox7.Text
             }
-                Dim d As Process = Process.Start(Download)
-            End If
+            Dim d As Process = Process.Start(Download)
         End If
     End Sub
     '動画情報を取得する
