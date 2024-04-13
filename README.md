@@ -1,6 +1,9 @@
 # Chocolatとは
 様々なサイトから動画をダウンロードを可能にするCLIアプリケーション、yt-dlpのコマンドを作成,実行するGUIアプリケーションです。
 
+![image](https://github.com/tegrafuse/Chocolat/assets/166810563/62c1db61-f44e-4f8c-8111-ba817dae4808)
+
+
 # 構築
 ## yt-dlp.exe
 https://github.com/yt-dlp/yt-dlp/releases/tag/2024.04.09
