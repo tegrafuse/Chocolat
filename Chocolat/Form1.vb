@@ -70,7 +70,7 @@ Public Class Form1
                     If (CheckBox8.Checked = True) Then
                         TextBox7.Text = TextBox7.Text + "-f " + Chr(34) + ComboBox6.Text + Chr(34) + " --merge-output-format " + ComboBox5.Text + " "
                     Else
-                        TextBox7.Text = TextBox7.Text + "-f " + Chr(34) + ComboBox6.Text + "+ba" + Chr(34) + " --merge-output-format " + ComboBox5.Text + " "
+                        TextBox7.Text = TextBox7.Text + "-f " + Chr(34) + ComboBox6.Text + "+ba/b" + Chr(34) + " --merge-output-format " + ComboBox5.Text + " "
                     End If
                 End If
 
